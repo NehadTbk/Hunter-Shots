@@ -21,10 +21,9 @@ imageInput.addEventListener("change", (event) => {
   if (file) {
     const reader = new FileReader();
     reader.onload = (e) => {
-      const img = document.createElement("img");
-      img.src = e.target.result;
-      shotsContainer.appendChild(img);
-      saveImageToLocalStorage(e.target.result);
+      const dataUrl = e.target.result;
+      createImageElement(dataUrl);
+      saveImageToLocalStorage(dataUrl);
     };
     reader.readAsDataURL(file);
   }
@@ -39,10 +38,34 @@ function saveImageToLocalStorage(dataUrl) {
 function loadImagesFromLocalStorage() {
   const images = JSON.parse(localStorage.getItem("shotsImages")) || [];
   images.forEach((image) => {
-    const img = document.createElement("img");
-    img.src = image;
-    shotsContainer.appendChild(img);
+    createImageElement(image);
   });
+}
+
+function createImageElement(dataUrl) {
+  const shotItem = document.createElement("div");
+  shotItem.classList.add("shots__item");
+
+  const img = document.createElement("img");
+  img.src = dataUrl;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.classList.add("delete-btn");
+  deleteBtn.addEventListener("click", () => {
+    shotItem.remove();
+    deleteImageFromLocalStorage(dataUrl);
+  });
+
+  shotItem.appendChild(img);
+  shotItem.appendChild(deleteBtn);
+  shotsContainer.appendChild(shotItem);
+}
+
+function deleteImageFromLocalStorage(dataUrl) {
+  let images = JSON.parse(localStorage.getItem("shotsImages")) || [];
+  images = images.filter((image) => image !== dataUrl);
+  localStorage.setItem("shotsImages", JSON.stringify(images));
 }
 
 document.addEventListener("DOMContentLoaded", loadImagesFromLocalStorage);
