@@ -185,3 +185,77 @@
     transform: translateY(-8px) rotate(-45deg);
   }
 }
+
+/* Hero Section */
+.hero {
+  background: #000000;
+  background: linear-gradient(to left, #4e4e4e, #000000);
+  padding: 200px 0;
+  font-family: "Osaka", "Arial", sans-serif;
+}
+
+.hero__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 90%;
+  text-align: center;
+  padding: 30px;
+  background: url("path-to-manga-texture.png") center/cover no-repeat;
+}
+
+.hero__heading {
+  font-size: 100px;
+  margin-bottom: 24px;
+  color: #ffffff;
+  text-shadow: 3px 3px #000000;
+  letter-spacing: 2px;
+}
+
+.hero__heading span {
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #414345, #232526);
+  background: linear-gradient(to right, #414345, #232526);
+
+  background: linear-gradient(to right, #ffffff, #ffffff);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.hero__description {
+  font-size: 60px;
+  color: #ffffff;
+  text-shadow: 2px 2px #000000;
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
+}
+
+.hero__description span {
+  background: -webkit-linear-gradient(to right, #ffffff, #ffffff);
+  background: linear-gradient(to right, #ffffff, #ffffff);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.highlight {
+  border-bottom: 4px solid #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+  .hero__heading {
+    font-size: 60px;
+  }
+
+  .hero__description {
+    font-size: 40px;
+  }
+}
