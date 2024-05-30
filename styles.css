@@ -414,3 +414,32 @@
     margin: 2.5rem 0;
   }
 }
+
+/* Shots Section */
+.shots {
+  background-color: #f0f0f0;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.shots h2 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.shots__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.shots__container img {
+  max-width: 500px;
+  border: 2px solid #ddd;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
