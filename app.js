@@ -38,9 +38,7 @@ function saveImageToLocalStorage(dataUrl) {
 
 function loadImagesFromLocalStorage() {
   const images = JSON.parse(localStorage.getItem("shotsImages")) || [];
-  images.forEach((image) => {
-    createImageElement(image);
-  });
+  images.map((image) => createImageElement(image)); // Gebruik van map
 }
 
 function createImageElement(dataUrl) {
@@ -65,7 +63,7 @@ function createImageElement(dataUrl) {
 
 function deleteImageFromLocalStorage(dataUrl) {
   let images = JSON.parse(localStorage.getItem("shotsImages")) || [];
-  images = images.filter((image) => image !== dataUrl);
+  images = [...images.filter((image) => image !== dataUrl)]; // Gebruik van spread operator
   localStorage.setItem("shotsImages", JSON.stringify(images));
 }
 
@@ -74,29 +72,27 @@ document.addEventListener("DOMContentLoaded", loadImagesFromLocalStorage);
 // Show active menu when scrolling
 const highlightMenu = () => {
   const elem = document.querySelector(".highlight");
+  const { scrollY: scrollPos, innerWidth } = window; // Gebruik van destructuring
   const homeMenu = document.querySelector("#home-page");
   const aboutMenu = document.querySelector("#about-page");
   const shotsMenu = document.querySelector("#shots-page");
-  let scrollPos = window.scrollY;
-  // console.log(scrollPos);
 
-  // adds 'highlight' class to my menu items
-  if (window.innerWidth > 960 && scrollPos < 600) {
+  if (innerWidth > 960 && scrollPos < 600) {
     homeMenu.classList.add("highlight");
     aboutMenu.classList.remove("highlight");
     return;
-  } else if (window.innerWidth > 960 && scrollPos < 1400) {
+  } else if (innerWidth > 960 && scrollPos < 1400) {
     aboutMenu.classList.add("highlight");
     homeMenu.classList.remove("highlight");
     shotsMenu.classList.remove("highlight");
     return;
-  } else if (window.innerWidth > 960 && scrollPos < 2345) {
+  } else if (innerWidth > 960 && scrollPos < 2345) {
     shotsMenu.classList.add("highlight");
     aboutMenu.classList.remove("highlight");
     return;
   }
 
-  if ((elem && window.innerWidth < 960 && scrollPos < 600) || elem) {
+  if ((elem && innerWidth < 960 && scrollPos < 600) || elem) {
     elem.classList.remove("highlight");
   }
 };
