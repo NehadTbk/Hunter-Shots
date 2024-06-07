@@ -1,5 +1,7 @@
 # Hunter-Shots
 
+Dit is een website waar ik de "shots" (screenshots, achtergronden, ...) van mijn favoriete show Hunter x Hunter kan verzamelen en op elk gewenst moment kan terugkijken.
+
 - Elementen selecteren
   const menu = document.querySelector("#mobile-menu");
 
@@ -7,7 +9,7 @@
   const shotItem = document.createElement('div');
   shotItem.classList.add('shots\_\_item');
 
-menu.classList.toggle("is-active");
+  menu.classList.toggle("is-active");
 
 - Event aan een element koppelen
   menu.addEventListener("click", mobileMenu);
@@ -36,7 +38,7 @@ menu.classList.toggle("is-active");
   const highlightMenu = () => {
   };
 
-addButton.addEventListener("click", () => { imageInput.click(); });
+  addButton.addEventListener("click", () => { imageInput.click(); });
 
 - Callback function
   reader.onload = (e) => {
@@ -51,7 +53,7 @@ addButton.addEventListener("click", () => { imageInput.click(); });
 - JSON manipuleren en weergeven
   const images = JSON.parse(localStorage.getItem('shotsImages')) || [];
 
-localStorage.setItem("shotsImages", JSON.stringify(images));
+  localStorage.setItem("shotsImages", JSON.stringify(images));
 
 - Gebruiken van een flexbox of CSS grid
   .navbar {
@@ -68,4 +70,4 @@ grid-template-columns: 1fr 1fr;
 - Gebruik van LocalStorage
   localStorage.setItem('shotsImages', JSON.stringify(images));
 
-const images = JSON.parse(localStorage.getItem("shotsImages")) || [];
+  const images = JSON.parse(localStorage.getItem("shotsImages")) || [];
